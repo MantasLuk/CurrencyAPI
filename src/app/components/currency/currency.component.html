@@ -1,0 +1,14 @@
+<div class="card m-5">
+    <div class="card-body">
+        Amount: {{currency.amount}} <b>{{currency.base}}</b>
+        <hr>
+        <div>
+            Date: <b>{{currency.date}}</b>
+        </div>
+        <div>
+            USD: <b>{{currency.rates["USD"]}}</b>
+        </div>
+        <hr>
+        <div class="btn btn-primary"(click)="refresh()">Refresh</div>
+    </div>
+</div>
