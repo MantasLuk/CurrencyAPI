@@ -8,3 +8,8 @@ export interface DataResponse{
     date:String,
     rates:Rates
 };
+
+export interface Currency{
+    code:String,
+    name:String
+}

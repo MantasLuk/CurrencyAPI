@@ -4,6 +4,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { CurrencyComponent } from './components/currency/currency.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,8 @@ import { CurrencyComponent } from './components/currency/currency.component';
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

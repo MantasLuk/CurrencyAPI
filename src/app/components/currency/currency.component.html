@@ -1,14 +1,26 @@
-<div class="card m-5">
+<div class="card m-5 col-md-4">
     <div class="card-body">
-        Amount: <b>{{currency.amount}} {{currency.base}}</b>
-        <hr>
-        <div>
-            Date: {{currency.date}}
+        <div>Currency Converter</div> <br>
+        <label for="">From:</label>
+        <select name="currency" id="currency" class="form-control" [(ngModel)]="from">
+            <option *ngFor="let currency of allCurrency" [value]="currency.code">{{currency.name}}</option>
+        </select>
+        <br>
+        <label for="">To:</label>
+        <select name="currency" id="currency" class="form-control" [(ngModel)]="to">
+            <option *ngFor="let currency of allCurrency" [value]="currency.code">{{currency.name}}</option>
+        </select>
+        <br>
+        <div *ngIf="isData">
+            {{currency.base}} => {{to}}
+            <br>
+                Rate: <b>{{currency.rates[to]}}</b>
+            <hr>
+            <div>
+                Date: {{currency.date}}
+            </div>
+            <br>
         </div>
-        <div>
-            USD: <b>{{currency.rates["USD"]}}</b>
-        </div>
-        <hr>
-        <div class="btn btn-primary"(click)="refresh()">Refresh</div>
+        <button class="btn btn-primary"(click)="refresh()" [disabled]="to=='' || from==''">Show rate</button>
     </div>
 </div>
