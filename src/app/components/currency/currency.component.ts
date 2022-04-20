@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { DataResponse } from 'src/app/models/currency';
+import { CurrencyService } from 'src/app/services/currency.service';
 
 
 
@@ -20,22 +21,20 @@ export class CurrencyComponent implements OnInit {
     }
   }
 
-  constructor(private http:HttpClient) { }
+  constructor(private currencyService:CurrencyService) { }
 
   ngOnInit(): void {
     this.refreshCurrency();
   }
 
   private refreshCurrency(){
-    this.http.get<DataResponse>("https://api.frankfurter.app/latest?from=EUR&to=USD").subscribe(
-      (response)=>{
-        this.currency = response;
-      }
-    )
+    this.currencyService.refreshCurrency().subscribe((response) => {
+      this.currency = response;
+      })
   }
 
   refresh(){
-    this.refreshCurrency()
+    this.refreshCurrency()  
   }
 
 }
